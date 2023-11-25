@@ -1,0 +1,67 @@
+﻿<Window x:Class="InterviewQuestion_WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InterviewQuestion_WPF"
+        mc:Ignorable="d"
+        Title="MainWindow">
+    <Window.Resources>
+        <Style x:Key='ColumnTitleText' TargetType='Label'>
+            <Setter Property='Foreground'
+                    Value='White' />
+            <Setter Property='Background'
+                    Value='#6CACE4' />
+            <Setter Property='FontSize'
+                    Value='24' />
+        </Style>
+    </Window.Resources>
+    <StackPanel HorizontalAlignment='Stretch'
+                VerticalAlignment='Stretch'>
+        <Label Padding='10' 
+               FontFamily='Lucida Sans'
+               FontSize='72'
+               Background='#003087'
+               Foreground='White'
+               HorizontalContentAlignment='Center'
+               HorizontalAlignment='Stretch'>WPF Interview Quiz</Label>
+        <ComboBox SelectedIndex='0' FontSize='20'>
+            <ComboBoxItem>Select One:</ComboBoxItem>
+        </ComboBox>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width='*' />
+                <ColumnDefinition Width='2*' />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row='0'
+                   Grid.Column='0'
+                   Style='{StaticResource ColumnTitleText}'>User ID</Label>
+            <Label Grid.Row='0'
+                   Grid.Column='1'></Label>
+            
+            <Label Grid.Row='1'
+                   Grid.Column='0'
+                   Style='{StaticResource ColumnTitleText}'>First Name</Label>
+            <Label Grid.Row='1'
+                   Grid.Column='1'></Label>
+
+            <Label Grid.Row='2'
+                   Grid.Column='0'
+                   Style='{StaticResource ColumnTitleText}'>Last Name</Label>
+            <Label Grid.Row='2'
+                   Grid.Column='1'></Label>
+
+            <Label Grid.Row='3'
+                   Grid.Column='0'
+                   Style='{StaticResource ColumnTitleText}'>Display Name</Label>
+            <Label Grid.Row='3'
+                   Grid.Column='1'></Label>
+        </Grid>
+    </StackPanel>
+</Window>
