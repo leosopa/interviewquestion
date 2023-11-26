@@ -4,12 +4,12 @@
 winexe
 C#
 .cs
-C:\Projetos\interviewquestion\InterviewQuestion-WPF\InterviewQuestion-WPF\obj\Debug\net7.0-windows\
+C:\Projetos\interviewquestion\InterviewQuestion-WPF -MVVM\InterviewQuestion-WPF\obj\Debug\net7.0-windows\
 InterviewQuestion_WPF
 none
 false
 TRACE;DEBUG;NET;NET7_0;NETCOREAPP
-C:\Projetos\interviewquestion\InterviewQuestion-WPF\InterviewQuestion-WPF\App.xaml
+C:\Projetos\interviewquestion\InterviewQuestion-WPF -MVVM\InterviewQuestion-WPF\App.xaml
 3175737142
 1-1754947519
 112144235015

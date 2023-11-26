@@ -1,3 +1,5 @@
----, ---, ---, Select One
+﻿---, ---, ---, Select One
+dlr, David, Lee Roth, Diamond Dave
+tas, Taylor, Swift, Tay Tay
 ala, Adele, Adkins, Addie
 jcg, Jim, Gaffigan, Mr. Universe

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Projetos\\interviewquestion\\InterviewQuestion-WPF\\InterviewQuestion-WPF\\InterviewQuestion-WPF.csproj": {}
+    "C:\\Projetos\\interviewquestion\\InterviewQuestion-WPF -MVVM\\InterviewQuestion-WPF\\InterviewQuestion-WPF.csproj": {}
   },
   "projects": {
-    "C:\\Projetos\\interviewquestion\\InterviewQuestion-WPF\\InterviewQuestion-WPF\\InterviewQuestion-WPF.csproj": {
+    "C:\\Projetos\\interviewquestion\\InterviewQuestion-WPF -MVVM\\InterviewQuestion-WPF\\InterviewQuestion-WPF.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projetos\\interviewquestion\\InterviewQuestion-WPF\\InterviewQuestion-WPF\\InterviewQuestion-WPF.csproj",
+        "projectUniqueName": "C:\\Projetos\\interviewquestion\\InterviewQuestion-WPF -MVVM\\InterviewQuestion-WPF\\InterviewQuestion-WPF.csproj",
         "projectName": "InterviewQuestion-WPF",
-        "projectPath": "C:\\Projetos\\interviewquestion\\InterviewQuestion-WPF\\InterviewQuestion-WPF\\InterviewQuestion-WPF.csproj",
+        "projectPath": "C:\\Projetos\\interviewquestion\\InterviewQuestion-WPF -MVVM\\InterviewQuestion-WPF\\InterviewQuestion-WPF.csproj",
         "packagesPath": "C:\\Users\\leoso\\.nuget\\packages\\",
-        "outputPath": "C:\\Projetos\\interviewquestion\\InterviewQuestion-WPF\\InterviewQuestion-WPF\\obj\\",
+        "outputPath": "C:\\Projetos\\interviewquestion\\InterviewQuestion-WPF -MVVM\\InterviewQuestion-WPF\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\leoso\\AppData\\Roaming\\NuGet\\NuGet.Config",
