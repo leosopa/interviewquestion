@@ -4,64 +4,96 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InterviewQuestion_WPF"
+        xmlns:controls="clr-namespace:InterviewQuestion_WPF.View"
+        xmlns:viewmodel="clr-namespace:InterviewQuestion_WPF.ViewModel"
         mc:Ignorable="d"
         Title="MainWindow">
     <Window.Resources>
-        <Style x:Key='ColumnTitleText' TargetType='Label'>
-            <Setter Property='Foreground'
-                    Value='White' />
-            <Setter Property='Background'
-                    Value='#6CACE4' />
-            <Setter Property='FontSize'
-                    Value='24' />
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibility"/>
+        <Style x:Key="GridBackground" TargetType="Grid">
+            <Setter Property="Background" Value="#003087"/>
+        </Style>
+        <Style x:Key="LabelBackground" TargetType="Label">
+            <Setter Property="Background" Value="#003087"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="Lucida Sans"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        </Style>
+        <Style x:Key="Button" TargetType="Button">
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="FontFamily" Value="Lucida Sans"/>
+            <Setter Property="FontWeight" Value="DemiBold"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
         </Style>
     </Window.Resources>
-    <StackPanel HorizontalAlignment='Stretch'
-                VerticalAlignment='Stretch'>
-        <Label Padding='10' 
-               FontFamily='Lucida Sans'
-               FontSize='72'
-               Background='#003087'
-               Foreground='White'
-               HorizontalContentAlignment='Center'
-               HorizontalAlignment='Stretch'>WPF Interview Quiz</Label>
-        <ComboBox SelectedIndex='0' FontSize='20'>
-            <ComboBoxItem>Select One:</ComboBoxItem>
-        </ComboBox>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width='*' />
-                <ColumnDefinition Width='2*' />
-            </Grid.ColumnDefinitions>
-            <Label Grid.Row='0'
-                   Grid.Column='0'
-                   Style='{StaticResource ColumnTitleText}'>User ID</Label>
-            <Label Grid.Row='0'
-                   Grid.Column='1'></Label>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="45" />
+        </Grid.RowDefinitions>
+        <StackPanel HorizontalAlignment='Stretch'
+                VerticalAlignment='Stretch' Grid.Row="0">
+            <Label
+               Style="{StaticResource LabelBackground}"
+               FontSize='72'>WPF Interview Quiz</Label>
+            <Label Style="{StaticResource LabelBackground}"
+               FontSize='20'
+               HorizontalAlignment='Stretch'>Select a Student to detail:</Label>
             
-            <Label Grid.Row='1'
-                   Grid.Column='0'
-                   Style='{StaticResource ColumnTitleText}'>First Name</Label>
-            <Label Grid.Row='1'
-                   Grid.Column='1'></Label>
+        </StackPanel>
+        <controls:SaveStudent Grid.Row="1" 
+                  Visibility="{Binding IsSaveVisible, Converter={StaticResource BooleanToVisibility}}"/>
+        <controls:StudentDetails Grid.Row="1"
+                  Visibility="{Binding IsDetailVisible, Converter={StaticResource BooleanToVisibility}}"/>
+        <Grid Grid.Row="2"
+              HorizontalAlignment="Stretch"
+              VerticalAlignment="Stretch" 
+              Style="{StaticResource GridBackground}" 
+              Visibility="{Binding IsCommandsVisible, Converter={StaticResource BooleanToVisibility}}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-            <Label Grid.Row='2'
-                   Grid.Column='0'
-                   Style='{StaticResource ColumnTitleText}'>Last Name</Label>
-            <Label Grid.Row='2'
-                   Grid.Column='1'></Label>
+            <Button x:Name="btnAdd" Grid.Column ="0" Content="Add"
+                    Command="{Binding AddCommand}"
+                    Style="{StaticResource Button}"/>
+            <Button x:Name="btnUpdate" Grid.Column ="1" Content="Update"
+                    Command="{Binding UpdateCommand}"
+                    Style="{StaticResource Button}"/>
+            <Button x:Name="btnDelete" Grid.Column ="2" Content="Delete" 
+                    Command="{Binding DeleteCommand}"
+                    Style="{StaticResource Button}"/>
 
-            <Label Grid.Row='3'
-                   Grid.Column='0'
-                   Style='{StaticResource ColumnTitleText}'>Display Name</Label>
-            <Label Grid.Row='3'
-                   Grid.Column='1'></Label>
         </Grid>
-    </StackPanel>
+
+        <Grid Grid.Row="2"
+              HorizontalAlignment="Stretch"
+              VerticalAlignment="Stretch" 
+              Style="{StaticResource GridBackground}" 
+              Visibility="{Binding IsSaveVisible, Converter={StaticResource BooleanToVisibility}}">
+            <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="15*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="75*"/>
+                    </Grid.ColumnDefinitions>
+            <Button x:Name="btnSave" 
+                            Grid.Column ="1" Content="Save"
+                            HorizontalAlignment="Left"
+                    Command="{Binding SaveCommand}"
+                    Style="{StaticResource Button}"/>
+            <Button x:Name="btnCancel" 
+                Grid.Column ="2" Content="Cancel"
+                HorizontalAlignment="Left"
+                Click="btnCancel_Click"
+                Style="{StaticResource Button}"/>
+        </Grid>
+    </Grid>
 </Window>
