@@ -1,0 +1,108 @@
+﻿<Window x:Class="InterviewQuestion_WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InterviewQuestion_WPF"
+        mc:Ignorable="d"
+        Title="MainWindow" SizeToContent="WidthAndHeight"
+        Loaded="Window_Loaded">
+    <Window.Resources>
+        <Style x:Key='ColumnTitleText' TargetType='Label'>
+            <Setter Property='Foreground'
+                    Value='White' />
+            <Setter Property='Background'
+                    Value='#6CACE4' />
+            <Setter Property='FontSize'
+                    Value='24' />
+        </Style>
+        <Style x:Key='ColumnValueText' TargetType='Label'>
+            <Setter Property='Foreground'
+            Value='Black' />
+            <Setter Property='Background'
+            Value='White' />
+            <Setter Property='FontSize'
+            Value='24' />
+        </Style>
+    </Window.Resources>
+    <StackPanel HorizontalAlignment='Stretch'
+                VerticalAlignment='Stretch'>
+        <Label Padding='10' 
+               FontFamily='Lucida Sans'
+               FontSize='72'
+               Background='#003087'
+               Foreground='White'
+               HorizontalContentAlignment='Center'
+               HorizontalAlignment='Stretch'>WPF Interview Quiz</Label>
+        <ComboBox x:Name="cmbStudents"
+            SelectedIndex='0' FontSize='20' SelectionChanged="cmbStudents_SelectionChanged">
+        </ComboBox>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width='*' />
+                <ColumnDefinition Width='2*' />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row='0'
+                   Grid.Column='0'
+                   Style='{StaticResource ColumnTitleText}'>User ID</Label>
+            <Label x:Name="lblUserId"
+                   Grid.Row='0'
+                   Grid.Column='1'
+                   Style='{StaticResource ColumnValueText}'></Label>
+
+            <Label Grid.Row='1'
+                   Grid.Column='0'
+                   Style='{StaticResource ColumnTitleText}'>First Name</Label>
+            <Label x:Name="lblFirstName"
+                   Grid.Row='1'
+                   Grid.Column='1'
+                   Style='{StaticResource ColumnValueText}'></Label>
+
+            <Label Grid.Row='2'
+                   Grid.Column='0'
+                   Style='{StaticResource ColumnTitleText}'>Last Name</Label>
+            <Label x:Name="lblLastName"
+                   Grid.Row='2'
+                   Grid.Column='1'
+                   Style='{StaticResource ColumnValueText}'></Label>
+
+            <Label Grid.Row='3'
+                   Grid.Column='0'
+                   Style='{StaticResource ColumnTitleText}'>Display Name</Label>
+            <Label x:Name="lblDisplayName"
+                   Grid.Row='3'
+                   Grid.Column='1'
+                   Style='{StaticResource ColumnValueText}'></Label>
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width='*' />
+                <ColumnDefinition Width='*' />
+                <ColumnDefinition Width='*' />
+            </Grid.ColumnDefinitions>
+            <Button x:Name="btnAdd"
+                    Grid.Column='0'
+                    Content='Add'
+                    FontSize='24'
+                    Click="btnAdd_Click" />
+            <Button x:Name="btnUpdate"
+                    Grid.Column='1'
+                    Content='Update'
+                    FontSize='24'
+                    IsEnabled="False"
+                    Click="btnUpdate_Click" />
+            <Button x:Name="btnDelete"
+                    Grid.Column='2'
+                    Content='Delete'
+                    FontSize='24'
+                    IsEnabled="False"
+                    Click="btnDelete_Click" />
+        </Grid>
+    </StackPanel>
+</Window>
