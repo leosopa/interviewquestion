@@ -1,4 +1,7 @@
-﻿using InterviewQuestion_WPF.DataAccess;
+﻿using InterviewQuestion_WPF.Bussiness;
+using InterviewQuestion_WPF.DataAccess;
+using InterviewQuestion_WPF.Model;
+using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Documents;
@@ -10,14 +13,16 @@ namespace InterviewQuestion_WPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly clsStudentBO _studentBO;
         public MainWindow()
         {
             InitializeComponent();
+            _studentBO = new clsStudentBO();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            var students = Util.GetStudents();
+            var students = _studentBO.GetAll();
             cmbStudents.ItemsSource = students;
             cmbStudents.DisplayMemberPath = "DisplayName";
             cmbStudents.SelectedIndex = 0;
@@ -52,21 +57,30 @@ namespace InterviewQuestion_WPF
         {
             clsStudent student = (clsStudent)cmbStudents.SelectedItem;
             SaveStudentWindow saveStudentWindow = new SaveStudentWindow(student);
+            saveStudentWindow.Closed += UpdateStudentsList;
             saveStudentWindow.ShowDialog();
+        }
+
+        private void UpdateStudentsList(object s, EventArgs args)
+        {
+            cmbStudents.ItemsSource = _studentBO.GetAll();
+            cmbStudents.SelectedIndex = 0;
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             SaveStudentWindow saveStudentWindow = new SaveStudentWindow();
+            saveStudentWindow.Closed += UpdateStudentsList;
             saveStudentWindow.ShowDialog();
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            if (Util.DeleteStudent((clsStudent)cmbStudents.SelectedItem))
+            clsStudent student = (clsStudent)cmbStudents.SelectedItem;
+            if (_studentBO.Delete(student.UserId))
             {
                 MessageBox.Show("Student deleted successfully.");
-                cmbStudents.ItemsSource = Util.GetStudents();
+                cmbStudents.ItemsSource = _studentBO.GetAll();
                 cmbStudents.SelectedIndex = 0;
             }
             else

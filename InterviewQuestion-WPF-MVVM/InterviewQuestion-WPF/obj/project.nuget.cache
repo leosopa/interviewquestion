@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "KX0Gg+OKMY0yy5pyRNe/k8OBJ9adGg90aeTl81btPK92PPDgG3L5ML8xenKV6kCioUkiZOLL4GWo9V/03rwuQA==",
+  "dgSpecHash": "0kuntXaNuXobcK8Fg0Ky1SilQdIw2P2erUCYo0fqyIo0ZQY8jjdtjOJsFGwIYC2ZSRHQUXmg1xmzkaPzLlkDfg==",
   "success": true,
-  "projectFilePath": "C:\\Projetos\\interviewquestion\\InterviewQuestion-WPF -MVVM\\InterviewQuestion-WPF\\InterviewQuestion-WPF.csproj",
+  "projectFilePath": "C:\\Projetos\\interviewquestion\\InterviewQuestion-WPF-MVVM\\InterviewQuestion-WPF\\InterviewQuestion-WPF.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

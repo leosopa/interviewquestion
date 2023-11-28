@@ -1,4 +1,6 @@
-﻿using InterviewQuestion_WPF.DataAccess;
+﻿using InterviewQuestion_WPF.Bussiness;
+using InterviewQuestion_WPF.DataAccess;
+using InterviewQuestion_WPF.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,11 +24,13 @@ namespace InterviewQuestion_WPF
     {
 
         private clsStudent? _student;
+        private clsStudentBO _studentBO;
 
         public SaveStudentWindow(clsStudent student)
         {
             InitializeComponent();
             FillData(student);
+            _studentBO = new clsStudentBO();
             txtUserId.IsEnabled = false;
         }
 
@@ -42,30 +46,74 @@ namespace InterviewQuestion_WPF
         public SaveStudentWindow()
         {
             InitializeComponent();
+            _studentBO = new clsStudentBO();
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             bool result = false;
-
-            if (_student == null)
+            if (ValidateFields())
             {
-                _student = new clsStudent(txtUserId.Text,
-                                          txtFirstName.Text,
-                                          txtLastName.Text,
-                                          txtDisplayName.Text);
-                result = Util.Add(_student);
+                try
+                {
+                    if (_student == null)
+                    {
+                        _student = new clsStudent(txtUserId.Text,
+                                                  txtFirstName.Text,
+                                                  txtLastName.Text,
+                                                  txtDisplayName.Text);
+                        result = _studentBO.Add(_student);
+                    }
+                    else
+                    {
+                        _student.FirstName = txtFirstName.Text;
+                        _student.LastName = txtLastName.Text;
+                        _student.DisplayName = txtDisplayName.Text;
+                        result = _studentBO.Update(_student);
+                    }
+
+                    if (result)
+                    {
+                        MessageBox.Show("Student saved successfully.");
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error saving student.");
+                        _student = null;
+                    }
+                }
+                catch (Exception err)
+                {
+                    if (err is StudentAlreadyExistsException)
+                    {
+                        MessageBox.Show(err.Message);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error saving student.");
+                    }
+                    _student = null;
+                }
             }
             else
-                result = Util.Update(_student);
-
-            if (result)
             {
-                MessageBox.Show("Student saved successfully");
-                this.Close();
+                MessageBox.Show("All fields are required. Please fill them out.");
             }
-            else
-                MessageBox.Show("Error saving student");
+
+            
+        }
+
+        private bool ValidateFields()
+        {
+            if (string.IsNullOrEmpty(txtUserId.Text) ||
+                    string.IsNullOrEmpty(txtFirstName.Text) ||
+                    string.IsNullOrEmpty(txtLastName.Text) ||
+                    string.IsNullOrEmpty(txtDisplayName.Text))
+            {
+                return false;
+            }
+            return true;
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)

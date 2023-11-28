@@ -16,7 +16,7 @@ namespace InterviewQuestion_WPF
         {
             DataContext = new clsStudentViewModel();
             InitializeComponent();
-            this.SizeToContent = SizeToContent.Height;
+            this.SizeToContent = SizeToContent.WidthAndHeight;
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)

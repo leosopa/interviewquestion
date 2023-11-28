@@ -87,6 +87,18 @@ namespace InterviewQuestion_WPF.ViewModel
                 return false;
         }
 
+        private bool CanExecuteSaveCommand()
+        {
+            if (Student != null 
+                && !Student.UserId.Equals(string.Empty)
+                && !Student.FirstName.Equals(string.Empty)
+                && !Student.LastName.Equals(string.Empty)
+                && !Student.DisplayName.Equals(string.Empty))
+                return true;
+            else
+                return false;
+        }
+
         private void UpdateStudent(object obj)
         {
             IsCommandsVisible = false;
@@ -146,7 +158,7 @@ namespace InterviewQuestion_WPF.ViewModel
             Students = _studentRepository.GetAllStudents();
             Student = Students.FirstOrDefault();
             AddCommand = new clsRelayCommand(AddStudent);
-            SaveCommand = new clsRelayCommand(SaveStudent);
+            SaveCommand = new clsRelayCommand(SaveStudent, f => CanExecuteSaveCommand());
             DeleteCommand = new clsRelayCommand(DeleteStudent, f => CanExecuteCommand());
             UpdateCommand = new clsRelayCommand(UpdateStudent, f => CanExecuteCommand());
         }
