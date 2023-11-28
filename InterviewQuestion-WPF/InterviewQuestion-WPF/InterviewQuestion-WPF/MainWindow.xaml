@@ -5,8 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InterviewQuestion_WPF"
         mc:Ignorable="d"
-        Title="MainWindow" SizeToContent="WidthAndHeight"
-        Loaded="Window_Loaded">
+        Title="MainWindow" SizeToContent="WidthAndHeight">
     <Window.Resources>
         <Style x:Key='ColumnTitleText' TargetType='Label'>
             <Setter Property='Foreground'
@@ -35,7 +34,9 @@
                HorizontalContentAlignment='Center'
                HorizontalAlignment='Stretch'>WPF Interview Quiz</Label>
         <ComboBox x:Name="cmbStudents"
-            SelectedIndex='0' FontSize='20' SelectionChanged="cmbStudents_SelectionChanged">
+            DisplayMemberPath="DisplayName"
+            FontSize='20' 
+            SelectionChanged="cmbStudents_SelectionChanged">
         </ComboBox>
         <Grid>
             <Grid.RowDefinitions>

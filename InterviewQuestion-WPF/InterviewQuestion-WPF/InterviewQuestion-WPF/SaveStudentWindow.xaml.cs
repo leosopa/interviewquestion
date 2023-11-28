@@ -22,10 +22,32 @@ namespace InterviewQuestion_WPF
     /// </summary>
     public partial class SaveStudentWindow : Window
     {
-
+        /// <summary>
+        /// A student object to be used to update the student information.
+        /// </summary>
         private clsStudent? _student;
+
+        /// <summary>
+        /// A reference to the clsStudentBO class to handle the add and update operations.
+        /// </summary>
         private clsStudentBO _studentBO;
 
+        #region Constructors
+
+        /// <summary>
+        /// A constructor without parameters where we create a new clsStudentBO object and let the _student object null.
+        /// </summary>
+        public SaveStudentWindow()
+        {
+            InitializeComponent();
+            _studentBO = new clsStudentBO();
+        }
+
+        /// <summary>
+        /// A constructor that receives a clsStudent object to update the student information.
+        /// Here, we fill the fields with the student information and disable the user id field for the user not to change it.
+        /// </summary>
+        /// <param name="student"></param>
         public SaveStudentWindow(clsStudent student)
         {
             InitializeComponent();
@@ -33,7 +55,13 @@ namespace InterviewQuestion_WPF
             _studentBO = new clsStudentBO();
             txtUserId.IsEnabled = false;
         }
+        #endregion
 
+        #region Methods
+
+        /// <summary>
+        /// This method fills the fields with the parameter student information.
+        /// </summary>
         private void FillData(clsStudent student)
         {
             _student = student;
@@ -43,12 +71,33 @@ namespace InterviewQuestion_WPF
             txtDisplayName.Text = student.DisplayName;
         }
 
-        public SaveStudentWindow()
+        /// <summary>
+        /// This methodo validates if all the fields are filled.
+        /// </summary>
+        private bool ValidateFields()
         {
-            InitializeComponent();
-            _studentBO = new clsStudentBO();
+            if (string.IsNullOrEmpty(txtUserId.Text) ||
+                    string.IsNullOrEmpty(txtFirstName.Text) ||
+                    string.IsNullOrEmpty(txtLastName.Text) ||
+                    string.IsNullOrEmpty(txtDisplayName.Text))
+            {
+                return false;
+            }
+            return true;
         }
 
+        #endregion
+
+        #region Events
+        /// <summary>
+        /// This method is called when the user clicks on the Save button.
+        /// First of all, we validate if all the fields are filled, then we
+        /// try to add or update the student information.
+        /// In try block, we check if the _student object is null, if it is null,
+        /// we create a new student object and call the Add method from the clsStudentBO class.
+        /// Case the _student object is not null, we update the student information and call the Update method.
+        /// In case of the User Id already exists, we catch an StudentAlreadyExistsException and show a message to the user.
+        /// </summary>
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             bool result = false;
@@ -101,24 +150,17 @@ namespace InterviewQuestion_WPF
                 MessageBox.Show("All fields are required. Please fill them out.");
             }
 
-            
+
         }
 
-        private bool ValidateFields()
-        {
-            if (string.IsNullOrEmpty(txtUserId.Text) ||
-                    string.IsNullOrEmpty(txtFirstName.Text) ||
-                    string.IsNullOrEmpty(txtLastName.Text) ||
-                    string.IsNullOrEmpty(txtDisplayName.Text))
-            {
-                return false;
-            }
-            return true;
-        }
 
+        /// <summary>
+        /// This method is called when the user clicks on the Cancel button and closes the window.
+        /// </summary>
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
+        #endregion
     }
 }

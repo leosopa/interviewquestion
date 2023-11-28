@@ -1,5 +1,8 @@
 ﻿namespace InterviewQuestion_WPF.Model
 {
+    /// <summary>
+    /// Class to represent a Student.
+    /// </summary>
     public class clsStudent
     {
         public string UserId { get; set; }
