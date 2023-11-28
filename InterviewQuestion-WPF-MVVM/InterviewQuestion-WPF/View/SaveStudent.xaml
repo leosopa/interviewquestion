@@ -41,7 +41,8 @@
         <TextBox Grid.Row='0'
            Grid.Column='1' 
            Style='{StaticResource ColumnValueTextBox}'
-           Text="{Binding Student.UserId}" />
+           Text="{Binding Student.UserId}"
+           IsEnabled="{Binding IsUserIdEnabled}"/>
 
         <Label Grid.Row='1'
        Grid.Column='0'

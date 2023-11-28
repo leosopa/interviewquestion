@@ -35,7 +35,7 @@ namespace InterviewQuestion_WPF
         #region Constructors
 
         /// <summary>
-        /// A constructor without parameters where we create a new clsStudentBO object and let the _student object null.
+        /// A constructor without parameters that creates a new clsStudentBO object and lets the _student object null.
         /// </summary>
         public SaveStudentWindow()
         {
@@ -45,7 +45,7 @@ namespace InterviewQuestion_WPF
 
         /// <summary>
         /// A constructor that receives a clsStudent object to update the student information.
-        /// Here, we fill the fields with the student information and disable the user id field for the user not to change it.
+        /// Fill the fields with the student information and disable the user id field for the user not to change it.
         /// </summary>
         /// <param name="student"></param>
         public SaveStudentWindow(clsStudent student)
@@ -91,12 +91,12 @@ namespace InterviewQuestion_WPF
         #region Events
         /// <summary>
         /// This method is called when the user clicks on the Save button.
-        /// First of all, we validate if all the fields are filled, then we
+        /// First of all, validate if all the fields are filled, then
         /// try to add or update the student information.
-        /// In try block, we check if the _student object is null, if it is null,
-        /// we create a new student object and call the Add method from the clsStudentBO class.
-        /// Case the _student object is not null, we update the student information and call the Update method.
-        /// In case of the User Id already exists, we catch an StudentAlreadyExistsException and show a message to the user.
+        /// In try block, check if the _student object is null, if it is null,
+        /// create a new student object and call the Add method from the clsStudentBO class.
+        /// IF the _student object is not null, update the student information and call the Update method.
+        /// In case of the User Id already exists, catch an StudentAlreadyExistsException and show a message to the user.
         /// </summary>
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {

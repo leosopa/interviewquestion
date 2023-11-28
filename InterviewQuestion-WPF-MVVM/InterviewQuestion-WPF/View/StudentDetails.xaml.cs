@@ -17,7 +17,10 @@ using System.Windows.Shapes;
 namespace InterviewQuestion_WPF.View
 {
     /// <summary>
-    /// Interaction logic for StudentDetails.xaml
+    /// This user control is used to show the details of a student.
+    /// In XAML file, I bound the controls' properties to the ViewModel's properties.
+    /// The combo box is bound to the list of students.
+    /// When the user change the selected item in the combo box, the ViewModel's properties are updated and the UI is updated with the new values.
     /// </summary>
     public partial class StudentDetails : UserControl
     {

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace InterviewQuestion_WPF.Bussiness
 {
     /// <summary>
-    /// As we don't have a database, and we use a file to store the data, we create this Exception to handle 
+    /// As I don't have a database, and I use a file to store the data, I created this Exception to handle 
     /// when a student already exists in the repository.
     /// </summary>
     public class StudentAlreadyExistsException : Exception

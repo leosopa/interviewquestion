@@ -25,6 +25,15 @@ namespace InterviewQuestion_WPF.DataAccess
             return students;
         }
 
+        internal static clsStudent GetStudentById(string uid)
+        {
+            List<clsStudent> students = GetStudents();
+
+            clsStudent student = students.FirstOrDefault(s => s.UserId == uid);
+
+            return student;
+        }
+
         internal static bool AddStudent(clsStudent student)
         {
             bool added = false;
@@ -121,5 +130,6 @@ namespace InterviewQuestion_WPF.DataAccess
 
             return updated;
         }
+
     }
 }

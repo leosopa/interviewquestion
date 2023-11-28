@@ -16,7 +16,9 @@ using System.Windows.Shapes;
 namespace InterviewQuestion_WPF.View
 {
     /// <summary>
-    /// Interaction logic for SaveStudent.xaml
+    /// This control is used to save a student.
+    /// I used a UserControl because I want to reuse it in the MainWindow.
+    /// In the XAML file, I bound the controls' properties to the ViewModel's properties.
     /// </summary>
     public partial class SaveStudent : UserControl
     {

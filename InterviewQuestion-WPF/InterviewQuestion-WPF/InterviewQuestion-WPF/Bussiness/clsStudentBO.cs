@@ -10,8 +10,8 @@ namespace InterviewQuestion_WPF.Bussiness
 {
     /// <summary>
     /// Class to handle all the business logic related to Student.
-    /// Here we can add rules to validate or add any other logic related to Student.
-    /// The reason that we are not using the same methods from Util class is the we can add some business logic here.
+    /// Here, I added rules to validate or add any other logic related to the Student.
+    /// I'm not using the same methods from the Util class because I can add some business logic here.
     /// </summary>
     public class clsStudentBO
     {
@@ -26,7 +26,7 @@ namespace InterviewQuestion_WPF.Bussiness
 
         /// <summary>
         /// Add a new student to the repository.
-        /// Here we verify if the user id already exists because we don't use a database and we don't have a unique constraint on the user id.
+        /// Verify if the user id already exists because there is no DBMS and no unique constraint on the user id.
         /// </summary>
         /// <param name="student"></param>
         /// <returns>A boolean value that represents the success or failure of the insert operation.</returns>
