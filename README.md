@@ -3,7 +3,7 @@ WPF Solution to answer an interview question.
 
 This is my solution to answer an interview question about WPF.
 
-I tried two project approaches in this repo:
+I tried two development approaches in this repo:
 
 1 - Maintenance environment project:
 
